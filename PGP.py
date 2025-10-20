@@ -251,7 +251,6 @@ def generate_keys():
  Pk = Pk.toBase64()
  S = I2OSP(S,32)
  S = base64.b64encode(S).decode("ascii")
-
  return S, Pk
 
 def chiffrer_msg(message, Pkb):
@@ -259,14 +258,10 @@ def chiffrer_msg(message, Pkb):
     g = curve.GetGenerator()
     k_aes = generer_k()  
     k_int = int.from_bytes(k_aes, byteorder='big')
-
     k2 = k_int * g  
-
     k2_byte = k2.tobytes()[:32] 
     c = encrypt_aes_cbc(message, k2_byte)  
- 
     Pkb = curve.fromBase64(Pkb)  
-
     c2 = k_int * Pkb  
     c2 = c2.toBase64()
     return c, c2    
@@ -280,12 +275,9 @@ def dechiffrer_msg(c, S_b, c2):
     Sb_inverse = pow(S_b, -1, n)
     c2_point = curve.fromBase64(c2)
     new_k2 = c2_point.__rmul__(Sb_inverse)
-    new_k2_byte = new_k2.tobytes()[:32]  # Utiliser les 32 premiers octets
-
-    m = decrypt_aes_cbc(c, new_k2_byte)  # Déchiffrer avec la clé elliptique
-
-    
-    return m  # Retourner le message déchiffré
+    new_k2_byte = new_k2.tobytes()[:32] 
+    m = decrypt_aes_cbc(c, new_k2_byte)     
+    return m  
 
 
 def ECDSA(params):
@@ -328,3 +320,4 @@ def ECDSA(params):
     _CurveOrder     = params["Curve_Order"]
     _sigByessize = (_CurveOrder.bit_length() // 8) + int(_CurveOrder.bit_length() % 8 != 0)
     return ECDSA
+
