@@ -24,5 +24,7 @@ PGP-ECC Crypto Module – A core cryptosystem implementing Pretty Good Privacy (
   - Keypair and signature generation  
   - PGP-like packet structure for message encryption
 
+## License
+MIT License — free for personal and academic use.
 
 
