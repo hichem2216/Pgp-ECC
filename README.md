@@ -27,4 +27,5 @@ PGP-ECC Crypto Module – A core cryptosystem implementing Pretty Good Privacy (
 ## License
 MIT License — free for personal and academic use.
 
-
+##  Contact
+Created by **Hichem Cherifi** — feel free to connect on [LinkedIn](https://www.linkedin.com/in/hichem-cherifi-5384361bb/) and [email](mailto:hichem.dz222002@gmail.com).
